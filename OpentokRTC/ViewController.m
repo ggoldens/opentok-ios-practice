@@ -10,7 +10,6 @@
 
 @interface ViewController ()
 <OTSessionDelegate, OTSubscriberKitDelegate, OTPublisherDelegate>
-
 @end
 
 @implementation ViewController {
