@@ -29,8 +29,6 @@
     IBOutlet UILabel *StatusLabel;
 
 }
-static double widgetHeight = 240;
-static double widgetWidth = 320;
 
 // *** Fill the following variables using your own Project info  ***
 // ***          https://dashboard.tokbox.com/projects            ***
@@ -88,7 +86,29 @@ static bool subscribeToSelf = NO;
     //Change the text of the status label
     StatusLabel.text = @"Connecting";
     
+    //Change the status label color
+    StatusLabel.textColor = [UIColor blueColor];
+    
     [_session connectWithToken:kToken error:&error];
+    if (error)
+    {
+        [self showAlert:[error localizedDescription]];
+    }
+}
+
+/**
+ * Disconnect from the session
+ */
+- (void)doDisconnect
+{
+    OTError *error = nil;
+    
+    //Change the text of the status label
+    StatusLabel.text = @"Disconnecting";
+    //Change the status label color
+    StatusLabel.textColor = [UIColor blueColor];
+    
+    [_session disconnect:&error];
     if (error)
     {
         [self showAlert:[error localizedDescription]];
@@ -166,6 +186,12 @@ static bool subscribeToSelf = NO;
     //Change the text of the status label
     StatusLabel.text = [self getSessionStatus];
     
+    //Change the status label color
+    [self changeStatusLabelColor];
+    
+    //Change the text of the button
+    [ConnectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+    
     // Step 2: We have successfully connected, now instantiate a publisher and
     // begin pushing A/V streams into OpenTok.
     
@@ -182,6 +208,12 @@ static bool subscribeToSelf = NO;
     
     //Change the text of the status label
     StatusLabel.text = [self getSessionStatus];
+    
+    //Change the status label color
+    [self changeStatusLabelColor];
+    
+    //Change the text of the button
+    [ConnectButton setTitle:@"Connect" forState:UIControlStateNormal];
 }
 
 
@@ -300,8 +332,12 @@ didFailWithError:(OTError*)error
 
 //Actions
 - (IBAction)onConnectButtonTouched:(UIButton *)sender {
+    if(_session.sessionConnectionStatus==OTSessionConnectionStatusConnected) {
+        [self doDisconnect];
+    } else {
+        [self doConnect];
+    }
 
-    [self doConnect];
     
 }
 
@@ -323,6 +359,18 @@ didFailWithError:(OTError*)error
     
     return connectionStatus;
 
+}
+- (void) changeStatusLabelColor
+{
+    if (_session.sessionConnectionStatus==OTSessionConnectionStatusConnected) {
+        StatusLabel.textColor = [UIColor greenColor];
+    }else if (_session.sessionConnectionStatus==OTSessionConnectionStatusConnecting) {
+        StatusLabel.textColor = [UIColor blueColor];
+    }else if (_session.sessionConnectionStatus==OTSessionConnectionStatusDisconnecting) {
+        StatusLabel.textColor = [UIColor blueColor];
+    }else {
+        StatusLabel.textColor = [UIColor redColor];
+    }
 }
 
 

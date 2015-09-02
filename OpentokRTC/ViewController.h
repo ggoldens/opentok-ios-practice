@@ -10,4 +10,5 @@
 @interface ViewController : UIViewController
 
 - (NSString *)getSessionStatus;
+- (void)changeStatusLabelColor;
 @end
