@@ -1,8 +1,5 @@
-Project 1: Hello World
-======================
-
-The Hello World app is a very simple application meant to get a new developer
-started using the OpenTok iOS SDK.
+OpentokRTC
+==========
 
 Application Notes
 -----------------
@@ -91,5 +88,5 @@ Undefined symbols for architecture armv7:
     the iOS Simulator, an OTPublisher object uses a demo video instead of the
     camera.
 
-[1]: https://dashboard.tokbox.com/projects
-[2]: https://tokbox.com/opentok/libraries/server/
+
+
