@@ -10,9 +10,4 @@
 
 @interface JoinViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UITextField *userName;
-@property (nonatomic, strong) IBOutlet UITextField *roomName;
-@property (nonatomic, strong) IBOutlet UITextField *roomToken;
-
-
 @end

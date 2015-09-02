@@ -47,8 +47,8 @@ static bool subscribeToSelf = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    RoomLabel.text = self.roomName;
-    WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.userName];
+    RoomLabel.text = self.roomData[@"user"];
+    WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"room"]];
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.

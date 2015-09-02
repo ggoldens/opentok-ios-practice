@@ -9,9 +9,7 @@
 
 @interface ViewController : UIViewController
 
-@property (weak,nonatomic) NSString *userName;
-@property (weak,nonatomic) NSString *roomName;
-@property (weak,nonatomic) NSString *roomToken;
+@property (strong,nonatomic) NSDictionary *roomData;
 
 - (NSString *)getSessionStatus;
 - (void)changeStatusLabelColor;

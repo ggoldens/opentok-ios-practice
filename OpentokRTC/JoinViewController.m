@@ -11,14 +11,13 @@
 
 @interface JoinViewController ()
 
+@property (nonatomic, weak) IBOutlet UITextField *userName;
+@property (nonatomic, weak) IBOutlet UITextField *roomName;
+@property (nonatomic, weak) IBOutlet UITextField *roomToken;
+
 @end
 
 @implementation JoinViewController
-
-@synthesize userName;
-@synthesize roomName;
-@synthesize roomToken;
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,9 +37,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showJoin"]) {
         ViewController *vc = [segue destinationViewController];
-        vc.userName = userName.text;
-        vc.roomName = roomName.text;
-        vc.roomToken = roomToken.text;
+        NSDictionary *data = @{
+                               @"user" : self.userName.text,
+                               @"room" : self.roomName.text,
+                               @"token" : self.roomToken.text,
+                            };
+        
+        vc.roomData = data;
         
     }
 }
