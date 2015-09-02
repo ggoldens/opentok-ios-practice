@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B13EB821B976E4F0091F809 /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13EB811B976E4F0091F809 /* JoinViewController.m */; };
 		9D89045C83BA0E4D2E9745EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF0E6D86210263CECC6A3B9 /* libPods.a */; };
 		D4426101185F81D800E23699 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D44260FF185F81D800E23699 /* InfoPlist.strings */; };
 		D4426103185F81D800E23699 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4426102185F81D800E23699 /* main.m */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		00BACA06E8CDB759A9349E08 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		0B13EB801B976E4F0091F809 /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
+		0B13EB811B976E4F0091F809 /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
 		0C16853B1A71949A00A507E3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		A5D01FB21A3A133C005D84F9 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A9594D9D1BA292CF1D7DFE4F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				D442610F185F81D800E23699 /* ViewController.m */,
 				D4426111185F81D800E23699 /* Images.xcassets */,
 				D44260FD185F81D800E23699 /* Supporting Files */,
+				0B13EB801B976E4F0091F809 /* JoinViewController.h */,
+				0B13EB811B976E4F0091F809 /* JoinViewController.m */,
 			);
 			path = OpentokRTC;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 			files = (
 				D4426110185F81D800E23699 /* ViewController.m in Sources */,
 				D4426107185F81D800E23699 /* AppDelegate.m in Sources */,
+				0B13EB821B976E4F0091F809 /* JoinViewController.m in Sources */,
 				D4426103185F81D800E23699 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
