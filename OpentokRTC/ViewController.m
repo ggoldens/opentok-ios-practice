@@ -17,6 +17,11 @@
     OTSession* _session;
     OTPublisher* _publisher;
     OTSubscriber* _subscriber;
+    
+    //Views
+    IBOutlet UIView *PublisherView;
+    IBOutlet UIView *SubscriberView;
+
 }
 static double widgetHeight = 240;
 static double widgetWidth = 320;
@@ -99,8 +104,8 @@ static bool subscribeToSelf = NO;
         [self showAlert:[error localizedDescription]];
     }
     
-    [self.view addSubview:_publisher.view];
-    [_publisher.view setFrame:CGRectMake(0, 0, widgetWidth, widgetHeight)];
+    [PublisherView addSubview:_publisher.view];
+    [_publisher.view setFrame:CGRectMake(0, 0, PublisherView.bounds.size.width, PublisherView.bounds.size.height)];
 }
 
 /**
@@ -217,9 +222,9 @@ didFailWithError:(OTError*)error
     NSLog(@"subscriberDidConnectToStream (%@)",
           subscriber.stream.connection.connectionId);
     assert(_subscriber == subscriber);
-    [_subscriber.view setFrame:CGRectMake(0, widgetHeight, widgetWidth,
-                                         widgetHeight)];
-    [self.view addSubview:_subscriber.view];
+    [_subscriber.view setFrame:CGRectMake(0, 0, SubscriberView.bounds.size.width,
+                                         SubscriberView.bounds.size.height)];
+    [SubscriberView addSubview:_subscriber.view];
 }
 
 - (void)subscriber:(OTSubscriberKit*)subscriber
