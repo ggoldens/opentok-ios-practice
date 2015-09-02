@@ -27,6 +27,8 @@
 
     //Labels
     IBOutlet UILabel *StatusLabel;
+    
+    
 
 }
 
@@ -214,6 +216,9 @@ static bool subscribeToSelf = NO;
     
     //Change the text of the button
     [ConnectButton setTitle:@"Connect" forState:UIControlStateNormal];
+    
+    //Clean all the subscribers
+    [self cleanupSubscriber];
 }
 
 
