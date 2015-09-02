@@ -21,6 +21,12 @@
     //Views
     IBOutlet UIView *PublisherView;
     IBOutlet UIView *SubscriberView;
+    
+    //Buttons
+    IBOutlet UIButton *ConnectButton;
+
+    //Labels
+    IBOutlet UILabel *StatusLabel;
 
 }
 static double widgetHeight = 240;
@@ -49,7 +55,7 @@ static bool subscribeToSelf = NO;
     _session = [[OTSession alloc] initWithApiKey:kApiKey
                                        sessionId:kSessionId
                                         delegate:self];
-    [self doConnect];
+    
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -78,6 +84,9 @@ static bool subscribeToSelf = NO;
 - (void)doConnect
 {
     OTError *error = nil;
+    
+    //Change the text of the status label
+    StatusLabel.text = @"Connecting";
     
     [_session connectWithToken:kToken error:&error];
     if (error)
@@ -154,8 +163,13 @@ static bool subscribeToSelf = NO;
 {
     NSLog(@"sessionDidConnect (%@)", session.sessionId);
     
+    //Change the text of the status label
+    StatusLabel.text = [self getSessionStatus];
+    
     // Step 2: We have successfully connected, now instantiate a publisher and
     // begin pushing A/V streams into OpenTok.
+    
+    
     [self doPublish];
 }
 
@@ -165,6 +179,9 @@ static bool subscribeToSelf = NO;
     [NSString stringWithFormat:@"Session disconnected: (%@)",
      session.sessionId];
     NSLog(@"sessionDidDisconnect (%@)", alertMessage);
+    
+    //Change the text of the status label
+    StatusLabel.text = [self getSessionStatus];
 }
 
 
@@ -280,5 +297,37 @@ didFailWithError:(OTError*)error
         [alert show];
     });
 }
+
+//Actions
+- (IBAction)onConnectButtonTouched:(UIButton *)sender {
+
+    [self doConnect];
+    
+}
+
+//Utils
+- (NSString*)getSessionStatus
+{
+    NSString* connectionStatus = @"";
+    if (_session.sessionConnectionStatus==OTSessionConnectionStatusConnected) {
+        connectionStatus = @"Connected";
+    }else if (_session.sessionConnectionStatus==OTSessionConnectionStatusConnecting) {
+        connectionStatus = @"Connecting";
+    }else if (_session.sessionConnectionStatus==OTSessionConnectionStatusDisconnecting) {
+        connectionStatus = @"Disconnecting";
+    }else if (_session.sessionConnectionStatus==OTSessionConnectionStatusNotConnected) {
+        connectionStatus = @"Disconnected";
+    }else{
+        connectionStatus = @"Failed";
+    }
+    
+    return connectionStatus;
+
+}
+
+
+
+
+
 
 @end

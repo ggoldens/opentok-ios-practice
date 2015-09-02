@@ -9,4 +9,5 @@
 
 @interface ViewController : UIViewController
 
+- (NSString *)getSessionStatus;
 @end
