@@ -28,7 +28,7 @@
 			containerPortal = D44260EB185F81D800E23699 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D44260F2185F81D800E23699;
-			remoteInfo = "OpentokRTC";
+			remoteInfo = OpentokRTC;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -208,7 +208,7 @@
 			dependencies = (
 			);
 			name = OpentokRTC;
-			productName = "OpentokRTC";
+			productName = OpentokRTC;
 			productReference = D44260F3185F81D800E23699 /* OpentokRTC.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -226,7 +226,7 @@
 				D442611D185F81D800E23699 /* PBXTargetDependency */,
 			);
 			name = OpentokRTCTests;
-			productName = "OpentokRTCTests";
+			productName = OpentokRTCTests;
 			productReference = D4426117185F81D800E23699 /* OpentokRTCTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -237,7 +237,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "TokBox, Inc.";
+				ORGANIZATIONNAME = Agilityfeat;
 				TargetAttributes = {
 					D4426116185F81D800E23699 = {
 						TestTargetID = D44260F2185F81D800E23699;
