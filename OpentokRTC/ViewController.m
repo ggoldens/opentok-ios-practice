@@ -25,10 +25,9 @@
     IBOutlet UIButton *ConnectButton;
 
     //Labels
+    IBOutlet UILabel *WelcomeLabel;
     IBOutlet UILabel *StatusLabel;
-    
-    
-
+    IBOutlet UILabel *RoomLabel;
 }
 
 // *** Fill the following variables using your own Project info  ***
@@ -48,6 +47,8 @@ static bool subscribeToSelf = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    RoomLabel.text = self.roomName;
+    WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.userName];
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.

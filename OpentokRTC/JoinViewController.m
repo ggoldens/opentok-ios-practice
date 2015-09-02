@@ -7,6 +7,7 @@
 //
 
 #import "JoinViewController.h"
+#import "ViewController.h"
 
 @interface JoinViewController ()
 
@@ -35,11 +36,12 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showRecipeDetail"]) {
-        segue.destinationViewController.userName = self.userName.text;
-        segue.destinationViewController.roomName = self.roomName.text;
-        segue.destinationViewController.tokenName = self.roomToken.text;
-
+    if ([segue.identifier isEqualToString:@"showJoin"]) {
+        ViewController *vc = [segue destinationViewController];
+        vc.userName = userName.text;
+        vc.roomName = roomName.text;
+        vc.roomToken = roomToken.text;
+        
     }
 }
 
