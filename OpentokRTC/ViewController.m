@@ -23,21 +23,16 @@
     
     //Buttons
     IBOutlet UIButton *ConnectButton;
-
+    
     //Labels
     IBOutlet UILabel *WelcomeLabel;
     IBOutlet UILabel *StatusLabel;
     IBOutlet UILabel *RoomLabel;
+    
+    //Strings
+    
+    
 }
-
-// *** Fill the following variables using your own Project info  ***
-// ***          https://dashboard.tokbox.com/projects            ***
-// Replace with your OpenTok API key
-static NSString* const kApiKey = @"45321952";
-// Replace with your generated session ID
-static NSString* const kSessionId = @"1_MX40NTMyMTk1Mn5-MTQ0MDUxMzY5MDkyN35Ia2lqZmZUY0JtVlE4TUtmR0s1Vk1rWHZ-UH4";
-// Replace with your generated token
-static NSString* const kToken = @"T1==cGFydG5lcl9pZD00NTMyMTk1MiZzaWc9ZmMxMzEyYjhlNWI0MTYxYTM4MzEwNjBjOTJiNGM4YzdkNmEyNmY1Nzpyb2xlPW1vZGVyYXRvciZzZXNzaW9uX2lkPTFfTVg0ME5UTXlNVGsxTW41LU1UUTBNRFV4TXpZNU1Ea3lOMzVJYTJscVptWlVZMEp0VmxFNFRVdG1SMHMxVmsxcldIWi1VSDQmY3JlYXRlX3RpbWU9MTQ0MDUxMzcxMyZub25jZT0wLjIwMTc5OTE5MjY5MDA5MTYmZXhwaXJlX3RpbWU9MTQ0MzEwNTY2NCZjb25uZWN0aW9uX2RhdGE9";
 
 // Change to NO to subscribe to streams other than your own.
 static bool subscribeToSelf = NO;
@@ -47,13 +42,14 @@ static bool subscribeToSelf = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    RoomLabel.text = self.roomData[@"user"];
-    WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"room"]];
+    
+    RoomLabel.text = self.roomData[@"apiData"][@"room"][@"room_name"];
+    WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"user"]];
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.
-    _session = [[OTSession alloc] initWithApiKey:kApiKey
-                                       sessionId:kSessionId
+    _session = [[OTSession alloc] initWithApiKey:self.roomData[@"apiData"][@"apiKey"]
+                                       sessionId:self.roomData[@"apiData"][@"room"][@"sessionid"]
                                         delegate:self];
     
 }
@@ -77,7 +73,7 @@ static bool subscribeToSelf = NO;
 }
 #pragma mark - OpenTok methods
 
-/** 
+/**
  * Asynchronously begins the session connect process. Some time later, we will
  * expect a delegate method to call us back with the results of this action.
  */
@@ -91,7 +87,7 @@ static bool subscribeToSelf = NO;
     //Change the status label color
     StatusLabel.textColor = [UIColor blueColor];
     
-    [_session connectWithToken:kToken error:&error];
+    [_session connectWithToken:self.roomData[@"apiData"][@"token"] error:&error];
     if (error)
     {
         [self showAlert:[error localizedDescription]];
@@ -127,7 +123,7 @@ static bool subscribeToSelf = NO;
     _publisher =
     [[OTPublisher alloc] initWithDelegate:self
                                      name:[[UIDevice currentDevice] name]];
-   
+    
     OTError *error = nil;
     [_session publish:_publisher error:&error];
     if (error)
@@ -151,8 +147,8 @@ static bool subscribeToSelf = NO;
 
 /**
  * Instantiates a subscriber for the given stream and asynchronously begins the
- * process to begin receiving A/V content for this stream. Unlike doPublish, 
- * this method does not add the subscriber to the view hierarchy. Instead, we 
+ * process to begin receiving A/V content for this stream. Unlike doPublish,
+ * this method does not add the subscriber to the view hierarchy. Instead, we
  * add the subscriber only after it has connected and begins receiving data.
  */
 - (void)doSubscribe:(OTStream*)stream
@@ -277,7 +273,7 @@ didFailWithError:(OTError*)error
           subscriber.stream.connection.connectionId);
     assert(_subscriber == subscriber);
     [_subscriber.view setFrame:CGRectMake(0, 0, SubscriberView.bounds.size.width,
-                                         SubscriberView.bounds.size.height)];
+                                          SubscriberView.bounds.size.height)];
     [SubscriberView addSubview:_subscriber.view];
 }
 
@@ -325,12 +321,12 @@ didFailWithError:(OTError*)error
 - (void)showAlert:(NSString *)string
 {
     // show alertview on main UI
-	dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OTError"
-                                                         message:string
-                                                        delegate:self
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles:nil] ;
+                                                        message:string
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil] ;
         [alert show];
     });
 }
@@ -342,7 +338,7 @@ didFailWithError:(OTError*)error
     } else {
         [self doConnect];
     }
-
+    
     
 }
 
@@ -363,7 +359,7 @@ didFailWithError:(OTError*)error
     }
     
     return connectionStatus;
-
+    
 }
 - (void) changeStatusLabelColor
 {

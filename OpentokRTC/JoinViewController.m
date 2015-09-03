@@ -15,6 +15,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *roomName;
 @property (nonatomic, weak) IBOutlet UITextField *roomToken;
 @property (strong,nonatomic) NSString *backendUrl;
+@property (strong,nonatomic) NSMutableDictionary *apiData;
 
 @end
 
@@ -64,8 +65,13 @@
                                json = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:nil];
+                               
+                               NSError * errorDictionary = nil;
+                               NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&errorDictionary];
+                               self.apiData = [dictionary mutableCopy];
+                               
                                [self performSegueWithIdentifier:@"showRoom" sender:self];
-                               NSLog(@"Async JSON: %@", json);
+                               NSLog(@"Async JSON: %@", self.apiData);
                            }];
 }
 - (IBAction)onStartRoomTouched:(id)sender {
@@ -111,8 +117,7 @@
         ViewController *vc = [segue destinationViewController];
         NSDictionary *data = @{
                                @"user" : self.userName.text,
-                               @"token" : self.roomToken.text,
-                               @"room" : self.roomName.text
+                               @"apiData": self.apiData
                             };
         vc.roomData = data;
         
