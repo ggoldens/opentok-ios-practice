@@ -28,7 +28,7 @@
     IBOutlet UILabel *WelcomeLabel;
     IBOutlet UILabel *StatusLabel;
     IBOutlet UILabel *RoomLabel;
-    
+    IBOutlet UILabel *RoomTokenLabel;
     //Strings
     
     
@@ -44,6 +44,7 @@ static bool subscribeToSelf = NO;
     [super viewDidLoad];
     
     RoomLabel.text = self.roomData[@"apiData"][@"room"][@"room_name"];
+    RoomTokenLabel.text = self.roomData[@"apiData"][@"room"][@"_id"];
     WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"user"]];
     
     // Step 1: As the view comes into the foreground, initialize a new instance
