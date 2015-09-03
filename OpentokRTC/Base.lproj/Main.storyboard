@@ -169,7 +169,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="showJoin" id="k51-zf-MJq"/>
+                                    <action selector="onJoinRoomTouched:" destination="MXY-Dk-UzR" eventType="touchUpInside" id="Xqv-Ek-tbn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8N-b1-gqY">
@@ -178,7 +178,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="showStart" id="eTm-Pg-xnc"/>
+                                    <action selector="onStartRoomTouched:" destination="MXY-Dk-UzR" eventType="touchUpInside" id="3eT-hq-8W6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -189,14 +189,12 @@
                         <outlet property="roomName" destination="pjb-Ub-Tus" id="eWQ-PQ-I9f"/>
                         <outlet property="roomToken" destination="W9Q-jJ-xM8" id="hG9-Ff-ZMc"/>
                         <outlet property="userName" destination="fpM-4f-FDL" id="W8B-a5-VjB"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="showRoom" id="VB5-al-PFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RW7-GQ-lja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="148"/>
+            <point key="canvasLocation" x="835" y="34"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="eTm-Pg-xnc"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -64,8 +64,17 @@
                                json = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:nil];
+                               [self performSegueWithIdentifier:@"showRoom" sender:self];
                                NSLog(@"Async JSON: %@", json);
                            }];
+}
+- (IBAction)onStartRoomTouched:(id)sender {
+    [self startNewRoom:self.userName.text withRoomName:self.roomName.text];
+
+}
+- (IBAction)onJoinRoomTouched:(id)sender {
+    [self joinRoom:self.userName.text withToken:self.roomToken.text];
+    
 }
 
 - (void) startNewRoom:(NSString*)userName withRoomName:(NSString*)roomName
@@ -98,22 +107,15 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    ViewController *vc = [segue destinationViewController];
-    if ([segue.identifier isEqualToString:@"showJoin"]) {
-        [self joinRoom:self.userName.text withToken:self.roomToken.text];
+    if ([segue.identifier isEqualToString:@"showRoom"]) {
+        ViewController *vc = [segue destinationViewController];
         NSDictionary *data = @{
                                @"user" : self.userName.text,
                                @"token" : self.roomToken.text,
+                               @"room" : self.roomName.text
                             };
         vc.roomData = data;
         
-    } else {
-       [self startNewRoom:self.userName.text withRoomName:self.roomName.text];
-        NSDictionary *data = @{
-                               @"user" : self.userName.text,
-                               @"room" : self.roomName.text
-                              };
-        vc.roomData = data;
     }
 }
 
