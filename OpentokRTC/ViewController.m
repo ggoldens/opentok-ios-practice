@@ -53,6 +53,9 @@ static bool subscribeToSelf = NO;
                                        sessionId:self.roomData[@"apiData"][@"room"][@"sessionid"]
                                         delegate:self];
     
+    //Do connect
+    [self doConnect];
+    
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -84,6 +87,9 @@ static bool subscribeToSelf = NO;
     
     //Change the text of the status label
     StatusLabel.text = @"Connecting";
+    
+    ConnectButton.hidden = YES;
+    
     
     //Change the status label color
     StatusLabel.textColor = [UIColor blueColor];
@@ -190,6 +196,10 @@ static bool subscribeToSelf = NO;
     
     //Change the text of the button
     [ConnectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+    
+    //Show disconnect Button
+    ConnectButton.hidden = NO;
+    
     
     // Step 2: We have successfully connected, now instantiate a publisher and
     // begin pushing A/V streams into OpenTok.
