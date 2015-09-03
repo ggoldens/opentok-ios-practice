@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface JoinViewController : UIViewController
-
+- (void) startNewRoom:(NSString*)userName withRoomName:(NSString*)roomName;
+- (void) doRequest: (NSDictionary*)parameters  toUrl:(NSString*)url;
+- (void) joinRoom:(NSString*)userName withToken:(NSString*)token;
 @end
+
+
