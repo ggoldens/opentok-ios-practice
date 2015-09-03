@@ -1,12 +1,10 @@
 //
 //  ViewController.m
-//  Hello-World
-//
-//  Copyright (c) 2013 TokBox, Inc. All rights reserved.
-//
+//  OpentokRTC
 
 #import "ViewController.h"
 #import <OpenTok/OpenTok.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface ViewController ()
 <OTSessionDelegate, OTSubscriberKitDelegate, OTPublisherDelegate>
@@ -28,10 +26,12 @@
     IBOutlet UILabel *WelcomeLabel;
     IBOutlet UILabel *StatusLabel;
     IBOutlet UILabel *RoomLabel;
-    IBOutlet UILabel *RoomTokenLabel;
-    //Strings
     
-    
+    //Texts
+    IBOutlet UITextField *txtToken;
+
+    //Buttons
+    IBOutlet UIButton *CopyTokenButton;
 }
 
 // Change to NO to subscribe to streams other than your own.
@@ -44,7 +44,7 @@ static bool subscribeToSelf = NO;
     [super viewDidLoad];
     
     RoomLabel.text = self.roomData[@"apiData"][@"room"][@"room_name"];
-    RoomTokenLabel.text = self.roomData[@"apiData"][@"room"][@"_id"];
+    txtToken.text = self.roomData[@"apiData"][@"room"][@"_id"];
     WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"user"]];
     
     // Step 1: As the view comes into the foreground, initialize a new instance
