@@ -47,10 +47,10 @@
     
     //parse parameters to json format
     NSError * error = nil;
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:parameters options:NSJSONReadingMutableContainers error:&error];
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:&error];
     
     //NSData *requestData = [jsonRequest dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
