@@ -147,6 +147,7 @@ static bool publisherStreaming = YES;
     
     [PublisherView addSubview:_publisher.view];
     [_publisher.view setFrame:CGRectMake(0, 0, PublisherView.bounds.size.width, PublisherView.bounds.size.height)];
+    [PublisherView sendSubviewToBack:_publisher.view];
 }
 
 /**
@@ -301,6 +302,7 @@ didFailWithError:(OTError*)error
     [_subscriber.view setFrame:CGRectMake(0, 0, SubscriberView.bounds.size.width,
                                           SubscriberView.bounds.size.height)];
     [SubscriberView addSubview:_subscriber.view];
+    [SubscriberView sendSubviewToBack: _subscriber.view];
 }
 
 - (void)subscriber:(OTSubscriberKit*)subscriber
