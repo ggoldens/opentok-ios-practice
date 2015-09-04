@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXY-Dk-UzR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXY-Dk-UzR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,7 +19,37 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlv-3a-0rp">
                                 <rect key="frame" x="16" y="208" width="288" height="366"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGJ-RA-xJl">
+                                        <rect key="frame" x="164" y="301" width="36" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="Ii0-If-HQw"/>
+                                        </constraints>
+                                        <state key="normal" image="microphone">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="mute:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="L6o-A7-bFa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5r-Is-3va">
+                                        <rect key="frame" x="227" y="301" width="36" height="32"/>
+                                        <state key="normal" image="camcorder">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="videoChange:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="R9g-sZ-sqQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="w5r-Is-3va" secondAttribute="trailing" constant="25" id="6JH-UJ-F7n"/>
+                                    <constraint firstAttribute="trailing" secondItem="LGJ-RA-xJl" secondAttribute="trailing" constant="88" id="hSm-Ff-Qk7"/>
+                                    <constraint firstItem="w5r-Is-3va" firstAttribute="leading" secondItem="LGJ-RA-xJl" secondAttribute="trailing" constant="27" id="tgg-Vr-yKT"/>
+                                    <constraint firstAttribute="bottom" secondItem="LGJ-RA-xJl" secondAttribute="bottom" constant="33" id="wht-3D-Nca"/>
+                                    <constraint firstItem="w5r-Is-3va" firstAttribute="top" secondItem="LGJ-RA-xJl" secondAttribute="top" id="yHs-e6-lmJ"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bd-5l-p9O">
                                 <rect key="frame" x="30" y="400" width="110" height="146"/>
@@ -125,7 +155,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connected to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60n-dU-kjR">
                                 <rect key="frame" x="16" y="156" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talking with:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYf-Nz-TPD">
@@ -212,7 +242,9 @@
                         <outlet property="SubscriberView" destination="mlv-3a-0rp" id="TOt-v8-A5N"/>
                         <outlet property="TalkingWithLabel" destination="60n-dU-kjR" id="1FT-cO-D9j"/>
                         <outlet property="WelcomeLabel" destination="kSX-rF-zlI" id="1NK-7x-LXO"/>
+                        <outlet property="muteBtn" destination="LGJ-RA-xJl" id="qDB-2G-7XV"/>
                         <outlet property="txtToken" destination="vB4-x7-cUw" id="WjN-YJ-dvn"/>
+                        <outlet property="videoBtn" destination="w5r-Is-3va" id="We7-6r-1wX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -359,4 +391,8 @@
             <point key="canvasLocation" x="835" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camcorder" width="32" height="32"/>
+        <image name="microphone" width="32" height="32"/>
+    </resources>
 </document>

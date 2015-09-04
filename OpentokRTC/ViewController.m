@@ -22,6 +22,8 @@
     //Buttons
     IBOutlet UIButton *ConnectButton;
     
+    IBOutlet UIButton *muteBtn;
+    IBOutlet UIButton *videoBtn;
     //Labels
     IBOutlet UILabel *WelcomeLabel;
     IBOutlet UILabel *StatusLabel;
@@ -37,6 +39,8 @@
 
 // Change to NO to subscribe to streams other than your own.
 static bool subscribeToSelf = NO;
+static bool publisherMuted = NO;
+static bool publisherStreaming = YES;
 
 #pragma mark - View lifecycle
 
@@ -361,8 +365,28 @@ didFailWithError:(OTError*)error
         [self doConnect];
     }
     
-    
 }
+- (IBAction)mute:(UIButton *)sender {
+    publisherMuted = !publisherMuted;
+    if(publisherMuted){
+        muteBtn.alpha = 0.5;
+    }else{
+        muteBtn.alpha = 1;
+    }
+    [_publisher setPublishAudio:!publisherMuted];
+    NSLog(@"MUTE");
+}
+
+- (IBAction)videoChange:(UIButton *)sender {
+    publisherStreaming = !publisherStreaming;
+    if(publisherStreaming){
+        videoBtn.alpha = 0.5;
+    }else{
+        videoBtn.alpha = 1;
+    }
+    [_publisher setPublishVideo:!publisherStreaming];
+}
+
 
 //Utils
 - (NSString*)getSessionStatus
