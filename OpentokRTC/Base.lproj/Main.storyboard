@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlv-3a-0rp">
-                                <rect key="frame" x="16" y="163" width="288" height="411"/>
+                                <rect key="frame" x="16" y="208" width="288" height="366"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bd-5l-p9O">
@@ -122,6 +122,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connected to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60n-dU-kjR">
+                                <rect key="frame" x="16" y="156" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talking with:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYf-Nz-TPD">
+                                <rect key="frame" x="16" y="571" width="289" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="67" width="70" height="22"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTC-C8-lnb">
+                                <rect key="frame" x="122" y="166" width="182" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="182" id="KG2-4L-tMc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="94" y="67" width="182" height="22"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94430634469696972" green="0.9360430397404611" blue="0.90600832692133815" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -129,7 +156,7 @@
                             <constraint firstItem="5jz-wa-9gb" firstAttribute="top" secondItem="Aok-k5-uSI" secondAttribute="bottom" constant="21" id="12r-51-xwe"/>
                             <constraint firstItem="mlv-3a-0rp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5TF-vh-Dcb"/>
                             <constraint firstItem="UVu-qW-pyt" firstAttribute="top" secondItem="vB4-x7-cUw" secondAttribute="bottom" constant="-59" id="6ix-rB-qmf"/>
-                            <constraint firstItem="mlv-3a-0rp" firstAttribute="top" secondItem="ZCi-My-CMG" secondAttribute="bottom" constant="48" id="7Cx-db-DEH"/>
+                            <constraint firstItem="mlv-3a-0rp" firstAttribute="top" secondItem="ZCi-My-CMG" secondAttribute="bottom" constant="93" id="7Cx-db-DEH"/>
                             <constraint firstItem="mlv-3a-0rp" firstAttribute="leading" secondItem="UVu-qW-pyt" secondAttribute="leading" id="7KU-i6-nfm"/>
                             <constraint firstItem="Aok-k5-uSI" firstAttribute="trailing" secondItem="mlv-3a-0rp" secondAttribute="trailing" id="E7f-rs-l8a"/>
                             <constraint firstItem="MMz-tA-90E" firstAttribute="baseline" secondItem="UVu-qW-pyt" secondAttribute="baseline" id="JLz-jH-Iu5"/>
@@ -156,6 +183,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="YaY-S4-FKx"/>
+                                <exclude reference="nYf-Nz-TPD"/>
+                                <exclude reference="uTC-C8-lnb"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="LJ6-NN-IbP"/>
@@ -176,6 +205,7 @@
                         <outlet property="RoomLabel" destination="5jz-wa-9gb" id="VUc-gK-tle"/>
                         <outlet property="StatusLabel" destination="MMz-tA-90E" id="Jrx-XI-bHW"/>
                         <outlet property="SubscriberView" destination="mlv-3a-0rp" id="TOt-v8-A5N"/>
+                        <outlet property="TalkingWithLabel" destination="60n-dU-kjR" id="1FT-cO-D9j"/>
                         <outlet property="WelcomeLabel" destination="kSX-rF-zlI" id="1NK-7x-LXO"/>
                         <outlet property="txtToken" destination="vB4-x7-cUw" id="WjN-YJ-dvn"/>
                     </connections>

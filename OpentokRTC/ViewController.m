@@ -26,6 +26,7 @@
     IBOutlet UILabel *WelcomeLabel;
     IBOutlet UILabel *StatusLabel;
     IBOutlet UILabel *RoomLabel;
+    IBOutlet UILabel *TalkingWithLabel;
     
     //Texts
     IBOutlet UITextField *txtToken;
@@ -46,6 +47,8 @@ static bool subscribeToSelf = NO;
     RoomLabel.text = self.roomData[@"apiData"][@"room"][@"room_name"];
     txtToken.text = self.roomData[@"apiData"][@"room"][@"_id"];
     WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"user"]];
+    
+    TalkingWithLabel.text = @"";
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.
@@ -178,6 +181,8 @@ static bool subscribeToSelf = NO;
  */
 - (void)cleanupSubscriber
 {
+    //TalkingWithLabel.text = @"";
+    
     [_subscriber.view removeFromSuperview];
     _subscriber = nil;
 }
@@ -214,6 +219,8 @@ static bool subscribeToSelf = NO;
     [NSString stringWithFormat:@"Session disconnected: (%@)",
      session.sessionId];
     NSLog(@"sessionDidDisconnect (%@)", alertMessage);
+    
+    TalkingWithLabel.text = @"";
     
     //Change the text of the status label
     StatusLabel.text = [self getSessionStatus];
@@ -282,6 +289,10 @@ didFailWithError:(OTError*)error
 {
     NSLog(@"subscriberDidConnectToStream (%@)",
           subscriber.stream.connection.connectionId);
+    NSString *text = [[NSString alloc] initWithFormat:@"Connected with %@", subscriber.stream.connection.data];
+    TalkingWithLabel.text = text;
+    NSLog(@"%@", text);
+    
     assert(_subscriber == subscriber);
     [_subscriber.view setFrame:CGRectMake(0, 0, SubscriberView.bounds.size.width,
                                           SubscriberView.bounds.size.height)];

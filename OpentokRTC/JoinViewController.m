@@ -85,30 +85,35 @@
 
 - (void) startNewRoom:(NSString*)userName withRoomName:(NSString*)roomName
 {
-    //Define json data parameters
-    NSDictionary *parameters = @{
-                                 @"room_name" : roomName,
-                                 @"name" : userName
-                                 };
-    //Define the end-point url
-    NSString *url = [NSString stringWithFormat:@"%@/%@", self.backendUrl, @"create-new-room"];
+    if(![roomName isEqualToString:@""] && ![userName isEqualToString:@""]) {
+        //Define json data parameters
+        NSDictionary *parameters = @{
+                                     @"room_name" : roomName,
+                                     @"name" : userName
+                                     };
+        //Define the end-point url
+        NSString *url = [NSString stringWithFormat:@"%@/%@", self.backendUrl, @"create-new-room"];
+        
+        //Execute request
+        [self doRequest:parameters toUrl: url];
+    }
     
-    //Execute request
-    [self doRequest:parameters toUrl: url];
 }
 
 - (void) joinRoom:(NSString*)userName withToken:(NSString*)token
 {
-    //Define json data parameters
-    NSDictionary *parameters = @{
+    if(![userName isEqualToString:@""] && ![token isEqualToString:@""]) {
+        //Define json data parameters
+        NSDictionary *parameters = @{
                                  @"_id" : token,
                                  @"name" : userName
                                  };
-    //Define the end-point url
-    NSString *url = [NSString stringWithFormat:@"%@/%@", self.backendUrl, @"join-room"];
+        //Define the end-point url
+        NSString *url = [NSString stringWithFormat:@"%@/%@", self.backendUrl, @"join-room"];
     
-    //Execute request
-    [self doRequest:parameters toUrl: url];
+        //Execute request
+        [self doRequest:parameters toUrl: url];
+    }
 }
 
 
