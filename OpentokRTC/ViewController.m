@@ -50,7 +50,7 @@
 static bool subscribeToSelf = NO;
 static bool publisherMuted = NO;
 static bool publisherStreaming = YES;
-static bool screenSharing = NO;
+
 
 
 @synthesize timeDisplay;
@@ -428,7 +428,7 @@ didFailWithError:(OTError*)error
 }
 
 - (IBAction)screenShareTouch:(id)sender {
-    if(screenSharing){
+    if(_publisher.videoCapture == _screenCapture){
         [_publisher setVideoType:OTPublisherKitVideoTypeCamera];
         
         // This disables the audio fallback feature when using routed sessions.
@@ -456,7 +456,7 @@ didFailWithError:(OTError*)error
         [_publisher setVideoCapture:_screenCapture];
         
     }
-    screenSharing = !screenSharing;
+    
 }
 
 - (IBAction)switchCamera:(id)sender {
