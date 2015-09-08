@@ -4,6 +4,7 @@
 
 #import "ViewController.h"
 #import <OpenTok/OpenTok.h>
+#import "TBoxScreenShare.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
 @interface ViewController ()
@@ -14,6 +15,9 @@
     OTSession* _session;
     OTPublisher* _publisher;
     OTSubscriber* _subscriber;
+    
+    dispatch_queue_t  _queue;
+    dispatch_source_t _timer;
     
     //Views
     IBOutlet UIView *PublisherView;
@@ -41,6 +45,10 @@
 static bool subscribeToSelf = NO;
 static bool publisherMuted = NO;
 static bool publisherStreaming = YES;
+static bool screenSharing = NO;
+
+
+@synthesize timeDisplay;
 
 #pragma mark - View lifecycle
 
@@ -53,6 +61,28 @@ static bool publisherStreaming = YES;
     WelcomeLabel.text = [NSString stringWithFormat: @"Hello, %@", self.roomData[@"user"]];
     
     TalkingWithLabel.text = @"";
+    
+    // Setup a timer to periodically update the UI. This gives us something
+    // dynamic that we can see on the receiver's end to verify everything works.
+    _queue = dispatch_queue_create("ticker-timer", 0);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _queue);
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0),
+                              10ull * NSEC_PER_MSEC, 1ull * NSEC_PER_SEC);
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        double timestamp = [[NSDate date] timeIntervalSince1970];
+        int64_t timeInMilisInt64 = (int64_t)(timestamp*1000);
+        
+        NSString *mills = [NSString stringWithFormat:@"%lld", timeInMilisInt64];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.timeDisplay setText:mills];
+        });
+    });
+    
+    dispatch_resume(_timer);
+
+    
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.
@@ -387,6 +417,34 @@ didFailWithError:(OTError*)error
         videoBtn.alpha = 1;
     }
     [_publisher setPublishVideo:!publisherStreaming];
+}
+
+- (IBAction)screenShareTouch:(id)sender {
+    screenSharing = !screenSharing;
+    if(screenSharing){
+        [_publisher setVideoType:OTPublisherKitVideoTypeCamera];
+        
+        // This disables the audio fallback feature when using routed sessions.
+        _publisher.audioFallbackEnabled = YES;
+        
+    }else{
+        
+        // Additionally, the publisher video type can be updated to signal to
+        // receivers that the video is from a screencast. This value also disables
+        // some downsample scaling that is used to adapt to changing network
+        // conditions. We will send at a lower framerate to compensate for this.
+        [_publisher setVideoType:OTPublisherKitVideoTypeScreen];
+        
+        // This disables the audio fallback feature when using routed sessions.
+        _publisher.audioFallbackEnabled = NO;
+        
+        // Finally, wire up the video source.
+        TBoxScreenShare* videoCapture = [[TBoxScreenShare alloc] initWithView:self.view];
+        [_publisher setVideoCapture:videoCapture];
+        
+        
+    }
+    
 }
 
 
