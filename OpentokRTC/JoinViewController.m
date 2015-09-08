@@ -23,6 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.userName setDelegate:self];
+    [self.roomName setDelegate:self];
+    [self.roomToken setDelegate:self];
+    
     // Do any additional setup after loading the view.
     self.backendUrl = @"https://opentokrtc-backend.herokuapp.com";
 }
@@ -31,6 +35,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
@@ -128,6 +133,10 @@
         
     }
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end

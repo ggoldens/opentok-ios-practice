@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXY-Dk-UzR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXY-Dk-UzR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -33,7 +33,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBU-ip-fcX">
-                                        <rect key="frame" x="164" y="236" width="33" height="30"/>
+                                        <rect key="frame" x="139" y="254" width="33" height="30"/>
                                         <state key="normal" title="Chat">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -62,6 +62,15 @@
                                         </state>
                                         <connections>
                                             <action selector="videoChange:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="R9g-sZ-sqQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDZ-OK-ScP">
+                                        <rect key="frame" x="171" y="225" width="101" height="30"/>
+                                        <state key="normal" title="SwitchCamera">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="switchCamera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="02m-IW-dcp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -258,6 +267,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dn3-hJ-I7L"/>
                     <connections>
+                        <outlet property="CameraSelection" destination="kDZ-OK-ScP" id="wFk-Y4-bw9"/>
                         <outlet property="ConnectButton" destination="ZCi-My-CMG" id="GhH-RI-zWK"/>
                         <outlet property="CopyTokenButton" destination="YaY-S4-FKx" id="fFb-Hp-C0v"/>
                         <outlet property="PublisherView" destination="7bd-5l-p9O" id="PTr-xV-9hh"/>
@@ -371,7 +381,7 @@
                                     <constraint firstAttribute="width" constant="235" id="Z98-sq-5ey"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a new chat room" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-Fx-dSd">
                                 <rect key="frame" x="215" y="287" width="170" height="21"/>
@@ -382,7 +392,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pjb-Ub-Tus">
                                 <rect key="frame" x="183" y="325" width="235" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Join a Room" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIf-ry-mPc">
                                 <rect key="frame" x="240" y="433" width="121" height="21"/>

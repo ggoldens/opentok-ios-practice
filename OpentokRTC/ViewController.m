@@ -33,6 +33,7 @@
     IBOutlet UILabel *StatusLabel;
     IBOutlet UILabel *RoomLabel;
     IBOutlet UILabel *TalkingWithLabel;
+    IBOutlet UIButton *CameraSelection;
     
     //Texts
     IBOutlet UITextField *txtToken;
@@ -428,7 +429,6 @@ didFailWithError:(OTError*)error
         
         // This disables the audio fallback feature when using routed sessions.
         _publisher.audioFallbackEnabled = YES;
-        
     }else{
         
         // Additionally, the publisher video type can be updated to signal to
@@ -443,10 +443,19 @@ didFailWithError:(OTError*)error
         // Finally, wire up the video source.
         TBoxScreenShare* videoCapture = [[TBoxScreenShare alloc] initWithView:self.view];
         [_publisher setVideoCapture:videoCapture];
-        
+  
         
     }
     
+}
+
+- (IBAction)switchCamera:(id)sender {
+    if(_publisher.cameraPosition == AVCaptureDevicePositionFront){
+        //FrontCamera Publishing
+        [_publisher setCameraPosition:AVCaptureDevicePositionBack];
+    }else{
+        [_publisher setCameraPosition:AVCaptureDevicePositionFront];
+    }
 }
 
 
