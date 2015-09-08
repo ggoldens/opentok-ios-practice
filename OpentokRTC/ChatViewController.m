@@ -80,7 +80,18 @@
 }
 
 - (IBAction)onSendButtonTouched:(id)sender {
+    //append the new message
     [tableData addObject:txtMessage.text];
+    NSLog(@"%@", tableData);
+    //empty the textField
+    txtMessage.text = @"";
+    
+    //Reload the tableView
+    [tableViewObject reloadData];
+    
+    //Scroll to bottom
+    NSIndexPath* ipath = [NSIndexPath indexPathForRow: [tableData count]-1 inSection: 0];
+    [tableViewObject scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
 }
 
 
