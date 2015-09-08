@@ -2,6 +2,7 @@
 //  OpentokRTC
 
 #import "AppDelegate.h"
+#import "ChatViewController.h"
 
 @implementation AppDelegate
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090025701B9F23E5006D7A80 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0900256F1B9F23E5006D7A80 /* ChatViewController.m */; };
 		0B13EB821B976E4F0091F809 /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13EB811B976E4F0091F809 /* JoinViewController.m */; };
 		0BBB47F61B9E7D5800B9CFEC /* TBoxScreenShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB47F51B9E7D5800B9CFEC /* TBoxScreenShare.m */; };
 		9637BFEB2EE0EB46DCB65E61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF0E6D86210263CECC6A3B9 /* libPods.a */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		00BACA06E8CDB759A9349E08 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		0900256E1B9F23B8006D7A80 /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		0900256F1B9F23E5006D7A80 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		0B13EB801B976E4F0091F809 /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
 		0B13EB811B976E4F0091F809 /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
 		0BBB47F41B9E7D5800B9CFEC /* TBoxScreenShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBoxScreenShare.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				D4426106185F81D800E23699 /* AppDelegate.m */,
 				D4426108185F81D800E23699 /* Main.storyboard */,
 				D442610E185F81D800E23699 /* ViewController.h */,
+				0900256E1B9F23B8006D7A80 /* ChatViewController.h */,
+				0900256F1B9F23E5006D7A80 /* ChatViewController.m */,
 				D442610F185F81D800E23699 /* ViewController.m */,
 				D4426111185F81D800E23699 /* Images.xcassets */,
 				D44260FD185F81D800E23699 /* Supporting Files */,
@@ -332,6 +337,7 @@
 			files = (
 				0BBB47F61B9E7D5800B9CFEC /* TBoxScreenShare.m in Sources */,
 				D4426110185F81D800E23699 /* ViewController.m in Sources */,
+				090025701B9F23E5006D7A80 /* ChatViewController.m in Sources */,
 				D4426107185F81D800E23699 /* AppDelegate.m in Sources */,
 				0B13EB821B976E4F0091F809 /* JoinViewController.m in Sources */,
 				D4426103185F81D800E23699 /* main.m in Sources */,
