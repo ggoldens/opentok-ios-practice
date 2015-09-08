@@ -15,6 +15,8 @@
     OTSession* _session;
     OTPublisher* _publisher;
     OTSubscriber* _subscriber;
+    id<OTVideoCapture> _cameraCapture;
+    TBoxScreenShare* _screenCapture;
     
     dispatch_queue_t  _queue;
     dispatch_source_t _timer;
@@ -95,6 +97,7 @@ static bool screenSharing = NO;
     
     //Do connect
     [self doConnect];
+
     
 }
 
@@ -170,7 +173,7 @@ static bool screenSharing = NO;
     _publisher =
     [[OTPublisher alloc] initWithDelegate:self
                                      name:[[UIDevice currentDevice] name]];
-    
+
     OTError *error = nil;
     [_session publish:_publisher error:&error];
     if (error)
@@ -181,6 +184,8 @@ static bool screenSharing = NO;
     [PublisherView addSubview:_publisher.view];
     [_publisher.view setFrame:CGRectMake(0, 0, PublisherView.bounds.size.width, PublisherView.bounds.size.height)];
     [PublisherView sendSubviewToBack:_publisher.view];
+    
+    _cameraCapture = _publisher.videoCapture;
 }
 
 /**
@@ -423,14 +428,15 @@ didFailWithError:(OTError*)error
 }
 
 - (IBAction)screenShareTouch:(id)sender {
-    screenSharing = !screenSharing;
     if(screenSharing){
         [_publisher setVideoType:OTPublisherKitVideoTypeCamera];
         
         // This disables the audio fallback feature when using routed sessions.
         _publisher.audioFallbackEnabled = YES;
-    }else{
         
+        // Finally, wire up the video source.
+        [_publisher setVideoCapture:_cameraCapture];
+    }else{
         // Additionally, the publisher video type can be updated to signal to
         // receivers that the video is from a screencast. This value also disables
         // some downsample scaling that is used to adapt to changing network
@@ -440,13 +446,17 @@ didFailWithError:(OTError*)error
         // This disables the audio fallback feature when using routed sessions.
         _publisher.audioFallbackEnabled = NO;
         
+        
         // Finally, wire up the video source.
-        TBoxScreenShare* videoCapture = [[TBoxScreenShare alloc] initWithView:self.view];
-        [_publisher setVideoCapture:videoCapture];
-  
+
+        if(!_screenCapture){
+           _screenCapture = [[TBoxScreenShare alloc] initWithView:self.view];
+            NSLog(@"screenCapture");
+        }
+        [_publisher setVideoCapture:_screenCapture];
         
     }
-    
+    screenSharing = !screenSharing;
 }
 
 - (IBAction)switchCamera:(id)sender {
