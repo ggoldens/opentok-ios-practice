@@ -39,6 +39,9 @@
 
     //Buttons
     IBOutlet UIButton *CopyTokenButton;
+    
+    //TableViews
+    IBOutlet UITableView *messageTableView;
 }
 
 // Change to NO to subscribe to streams other than your own.
