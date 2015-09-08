@@ -480,6 +480,10 @@ didFailWithError:(OTError*)error
     }
 }
 
+- (IBAction)onCloseTouched:(id)sender {
+    
+    [self doDisconnect];
+}
 
 
 
