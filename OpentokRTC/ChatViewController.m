@@ -3,6 +3,7 @@
 //  OpentokRTC
 
 #import "ChatViewController.h"
+#import "ViewController.h"
 #import <OpenTok/OpenTok.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 
@@ -12,10 +13,12 @@
 
 @implementation ChatViewController {
     
-
+    
     IBOutlet UITableView *messageTableView;
     
     IBOutlet UITextField *txtMessage;
+    OTSubscriber* _subscriber;
+
 }
 
 @synthesize tableData,tableViewObject;
@@ -26,9 +29,24 @@
     
     [tableViewObject setDelegate:self];
     [tableViewObject setDataSource:self];
-    
     tableData = [[NSMutableArray alloc] init];
+    
 
+    //Defining the notification to receive chat messages
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveChatMessageNotification:)
+                                                 name:@"newChatMessageReceived"
+                                               object:nil];
+
+    
+}
+
+- (void) receiveChatMessageNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"newChatMessageReceived"]) {
+        [self appendMessageToTable:notification.userInfo[@"message"]];
+    }
+    
 }
 
 
@@ -79,12 +97,10 @@
     
 }
 
-- (IBAction)onSendButtonTouched:(id)sender {
+- (void) appendMessageToTable:(NSString*)message
+{
     //append the new message
-    [tableData addObject:txtMessage.text];
-    NSLog(@"%@", tableData);
-    //empty the textField
-    txtMessage.text = @"";
+    [tableData addObject:message];
     
     //Reload the tableView
     [tableViewObject reloadData];
@@ -92,7 +108,36 @@
     //Scroll to bottom
     NSIndexPath* ipath = [NSIndexPath indexPathForRow: [tableData count]-1 inSection: 0];
     [tableViewObject scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
+
 }
+
+- (IBAction)onSendButtonTouched:(id)sender {
+    
+    [self appendMessageToTable:txtMessage.text];
+    [self sendMessage:txtMessage.text];
+    
+    //empty the textField
+    txtMessage.text = @"";
+    
+}
+
+- (void)sendMessage:(NSString*)message
+{
+    
+    NSDictionary *userInfo = @{@"message": message};
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"sendChatMessage"
+     object:self
+     userInfo:userInfo];
+    
+}
+- (IBAction)onBackButtonTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
 
 
 

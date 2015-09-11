@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXY-Dk-UzR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MXY-Dk-UzR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -38,7 +38,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="8Eh-Jg-Pdc" kind="show" id="aDu-us-aFJ"/>
+                                            <action selector="presentChatController:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SHn-ok-her"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oje-vb-tCf">
@@ -289,7 +289,7 @@
         <!--Chat View Controller-->
         <scene sceneID="eZm-Kg-cq0">
             <objects>
-                <viewController id="8Eh-Jg-Pdc" customClass="ChatViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ChatViewController" storyboardIdentifier="ChatViewController" id="8Eh-Jg-Pdc" customClass="ChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h53-qB-g4T"/>
                         <viewControllerLayoutGuide type="bottom" id="cNS-YO-Vke"/>
@@ -299,8 +299,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZTf-yQ-cVx">
-                                <rect key="frame" x="16" y="0.0" width="568" height="540"/>
+                                <rect key="frame" x="16" y="60" width="568" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="9" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" id="hxA-K7-Xfr">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -341,11 +342,20 @@
                                     <constraint firstItem="1uJ-pa-u5G" firstAttribute="leading" secondItem="Rr2-wd-siB" secondAttribute="trailing" constant="20" id="j5w-X1-Nsi"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxC-b6-fEs">
+                                <rect key="frame" x="16" y="28" width="46" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBackButtonTapped:" destination="8Eh-Jg-Pdc" eventType="touchUpInside" id="R2A-ba-TTI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZTf-yQ-cVx" firstAttribute="leading" secondItem="uR3-iY-dIW" secondAttribute="leadingMargin" id="4RK-W2-MmB"/>
-                            <constraint firstItem="ZTf-yQ-cVx" firstAttribute="top" secondItem="uR3-iY-dIW" secondAttribute="topMargin" id="MF0-Nu-xx7"/>
+                            <constraint firstItem="ZTf-yQ-cVx" firstAttribute="top" secondItem="uR3-iY-dIW" secondAttribute="topMargin" constant="60" id="MF0-Nu-xx7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QMw-y6-GiI" secondAttribute="trailing" id="PHA-ZS-b8o"/>
                             <constraint firstAttribute="bottomMargin" secondItem="QMw-y6-GiI" secondAttribute="bottom" id="cBz-DS-3Jn"/>
                             <constraint firstItem="QMw-y6-GiI" firstAttribute="top" secondItem="ZTf-yQ-cVx" secondAttribute="bottom" id="fjx-Nn-LN4"/>

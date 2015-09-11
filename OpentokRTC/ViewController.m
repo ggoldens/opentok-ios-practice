@@ -6,6 +6,7 @@
 #import <OpenTok/OpenTok.h>
 #import "TBoxScreenShare.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "ChatViewController.h"
 
 @interface ViewController ()
 <OTSessionDelegate, OTSubscriberKitDelegate, OTPublisherDelegate>
@@ -39,11 +40,11 @@
     
     //Texts
     IBOutlet UITextField *txtToken;
-
+    
     //Buttons
     IBOutlet UIButton *CopyTokenButton;
     
-
+    
 }
 
 // Change to NO to subscribe to streams other than your own.
@@ -86,7 +87,7 @@ static bool publisherStreaming = YES;
     });
     
     dispatch_resume(_timer);
-
+    
     
     
     // Step 1: As the view comes into the foreground, initialize a new instance
@@ -95,9 +96,24 @@ static bool publisherStreaming = YES;
                                        sessionId:self.roomData[@"apiData"][@"room"][@"sessionid"]
                                         delegate:self];
     
+    
+    //Defining the notification to send messages from the chat
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(sendChatMessageNotification:)
+                                                 name:@"sendChatMessage"
+                                               object:nil];
+    
     //Do connect
     [self doConnect];
+    
+    
+}
 
+- (void) sendChatMessageNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"sendChatMessage"]) {
+        [self sendSignal:notification.userInfo[@"message"]];
+    }
     
 }
 
@@ -173,7 +189,7 @@ static bool publisherStreaming = YES;
     _publisher =
     [[OTPublisher alloc] initWithDelegate:self
                                      name:[[UIDevice currentDevice] name]];
-
+    
     OTError *error = nil;
     [_session publish:_publisher error:&error];
     if (error)
@@ -448,9 +464,9 @@ didFailWithError:(OTError*)error
         
         
         // Finally, wire up the video source.
-
+        
         if(!_screenCapture){
-           _screenCapture = [[TBoxScreenShare alloc] initWithView:self.view];
+            _screenCapture = [[TBoxScreenShare alloc] initWithView:self.view];
             NSLog(@"screenCapture");
         }
         [_publisher setVideoCapture:_screenCapture];
@@ -502,12 +518,36 @@ didFailWithError:(OTError*)error
 }
 
 - (IBAction)onCloseTouched:(id)sender {
-    
     [self doDisconnect];
 }
 
+- (void)session:(OTSession*)session receivedSignalType:(NSString*)type fromConnection:(OTConnection*)connection withString:(NSString*)string {
 
+    if (![connection.connectionId isEqualToString:session.connection.connectionId]) {
+        NSDictionary *userInfo = @{@"message": string};
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"newChatMessageReceived"
+         object:self
+         userInfo:userInfo];
+    }
+}
 
+-(void)sendSignal:(NSString*)message
+{
+    OTError* error = nil;
+    [_session signalWithType:@"chat" string:message connection:nil error:&error];
+    if (error) {
+        NSLog(@"signal error %@", error);
+    } else {
+        NSLog(@"signal sent");
+    }
+}
 
+-(IBAction)presentChatController:(UIButton *) sender {
+    if (! self.chatVC) {
+        self.chatVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatViewController"];
+    }
+    [self presentViewController:self.chatVC animated:YES completion:nil];
+}
 
 @end
