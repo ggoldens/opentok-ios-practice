@@ -1,10 +1,19 @@
 PODS:
+  - JVFloatLabeledTextField (1.1.0)
   - OpenTok (2.6.0)
+  - RNFrostedSidebar (0.2.0)
+  - UIColor+FlatColors (0.0.2)
 
 DEPENDENCIES:
+  - JVFloatLabeledTextField
   - OpenTok
+  - RNFrostedSidebar (~> 0.2.0)
+  - UIColor+FlatColors
 
 SPEC CHECKSUMS:
+  JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   OpenTok: 2b99bd75055554f4028735fa84e4242e4932d245
+  RNFrostedSidebar: 9491d8627e5e99b92334d36def432c0faf7ebae4
+  UIColor+FlatColors: 6c699df7a575281794c688c64cee6c44fd1f93b4
 
 COCOAPODS: 0.38.2

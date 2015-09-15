@@ -10,7 +10,12 @@
 		090025701B9F23E5006D7A80 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0900256F1B9F23E5006D7A80 /* ChatViewController.m */; };
 		0B13EB821B976E4F0091F809 /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13EB811B976E4F0091F809 /* JoinViewController.m */; };
 		0BBB47F61B9E7D5800B9CFEC /* TBoxScreenShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB47F51B9E7D5800B9CFEC /* TBoxScreenShare.m */; };
-		9637BFEB2EE0EB46DCB65E61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF0E6D86210263CECC6A3B9 /* libPods.a */; };
+		0BE69F011BA77C9D00150915 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4426138185F877600E23699 /* QuartzCore.framework */; };
+		0BE69F031BA77CA800150915 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE69F021BA77CA800150915 /* Accelerate.framework */; };
+		0BE69F041BA77CC000150915 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44260FA185F81D800E23699 /* UIKit.framework */; };
+		0BE69F071BA78F8700150915 /* BottomBorderText.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE69F061BA78F8700150915 /* BottomBorderText.m */; };
+		0BE69F091BA796B000150915 /* tokbox-logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BE69F081BA796B000150915 /* tokbox-logo.gif */; };
+		5E8346B0A979725613B4B19E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F041366ED27EE7F970BD10B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D4426101185F81D800E23699 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D44260FF185F81D800E23699 /* InfoPlist.strings */; };
 		D4426103185F81D800E23699 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4426102185F81D800E23699 /* main.m */; };
 		D4426107185F81D800E23699 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4426106185F81D800E23699 /* AppDelegate.m */; };
@@ -42,7 +47,12 @@
 		0B13EB811B976E4F0091F809 /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
 		0BBB47F41B9E7D5800B9CFEC /* TBoxScreenShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBoxScreenShare.h; sourceTree = "<group>"; };
 		0BBB47F51B9E7D5800B9CFEC /* TBoxScreenShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBoxScreenShare.m; sourceTree = "<group>"; };
+		0BE69F021BA77CA800150915 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0BE69F051BA78F8700150915 /* BottomBorderText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBorderText.h; sourceTree = "<group>"; };
+		0BE69F061BA78F8700150915 /* BottomBorderText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBorderText.m; sourceTree = "<group>"; };
+		0BE69F081BA796B000150915 /* tokbox-logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "tokbox-logo.gif"; path = "../../Desktop/tokbox-logo.gif"; sourceTree = "<group>"; };
 		0C16853B1A71949A00A507E3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		0F041366ED27EE7F970BD10B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D01FB21A3A133C005D84F9 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A9594D9D1BA292CF1D7DFE4F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D44260F3185F81D800E23699 /* OpentokRTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpentokRTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +85,6 @@
 		D4426148185F8F5000E23699 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D442614B185F92BF00E23699 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		D492D19019547E4C00F4F534 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		FAF0E6D86210263CECC6A3B9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +92,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9637BFEB2EE0EB46DCB65E61 /* libPods.a in Frameworks */,
+				0BE69F041BA77CC000150915 /* UIKit.framework in Frameworks */,
+				0BE69F031BA77CA800150915 /* Accelerate.framework in Frameworks */,
+				0BE69F011BA77C9D00150915 /* QuartzCore.framework in Frameworks */,
+				5E8346B0A979725613B4B19E /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +144,7 @@
 		D44260F5185F81D800E23699 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BE69F021BA77CA800150915 /* Accelerate.framework */,
 				0C16853B1A71949A00A507E3 /* libc++.dylib */,
 				A5D01FB21A3A133C005D84F9 /* VideoToolbox.framework */,
 				D442612E185F82AB00E23699 /* OpenTok.framework */,
@@ -148,7 +161,7 @@
 				D44260F6185F81D800E23699 /* Foundation.framework */,
 				D44260F8185F81D800E23699 /* CoreGraphics.framework */,
 				D44260FA185F81D800E23699 /* UIKit.framework */,
-				FAF0E6D86210263CECC6A3B9 /* libPods.a */,
+				0F041366ED27EE7F970BD10B /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,11 +172,14 @@
 				D4426105185F81D800E23699 /* AppDelegate.h */,
 				D4426106185F81D800E23699 /* AppDelegate.m */,
 				D4426108185F81D800E23699 /* Main.storyboard */,
+				0BE69F051BA78F8700150915 /* BottomBorderText.h */,
+				0BE69F061BA78F8700150915 /* BottomBorderText.m */,
 				D442610E185F81D800E23699 /* ViewController.h */,
 				0900256E1B9F23B8006D7A80 /* ChatViewController.h */,
 				0900256F1B9F23E5006D7A80 /* ChatViewController.m */,
 				D442610F185F81D800E23699 /* ViewController.m */,
 				D4426111185F81D800E23699 /* Images.xcassets */,
+				0BE69F081BA796B000150915 /* tokbox-logo.gif */,
 				D44260FD185F81D800E23699 /* Supporting Files */,
 				0B13EB801B976E4F0091F809 /* JoinViewController.h */,
 				0B13EB811B976E4F0091F809 /* JoinViewController.m */,
@@ -214,6 +230,7 @@
 				D44260F0185F81D800E23699 /* Frameworks */,
 				D44260F1185F81D800E23699 /* Resources */,
 				6BCB70CF839CC031482FB46A /* Copy Pods Resources */,
+				AD3EF03B12F44132D9D221B6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -284,6 +301,7 @@
 				D442614C185F92C000E23699 /* README.md in Resources */,
 				D442610A185F81D800E23699 /* Main.storyboard in Resources */,
 				D4426101185F81D800E23699 /* InfoPlist.strings in Resources */,
+				0BE69F091BA796B000150915 /* tokbox-logo.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +331,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AD3EF03B12F44132D9D221B6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EFC642817FFA643DBA2BE3B9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE69F071BA78F8700150915 /* BottomBorderText.m in Sources */,
 				0BBB47F61B9E7D5800B9CFEC /* TBoxScreenShare.m in Sources */,
 				D4426110185F81D800E23699 /* ViewController.m in Sources */,
 				090025701B9F23E5006D7A80 /* ChatViewController.m in Sources */,
@@ -469,7 +503,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpentokRTC/OpentokRTC-Prefix.pch";
 				INFOPLIST_FILE = "OpentokRTC/OpentokRTC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				PRODUCT_NAME = OpentokRTC;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -487,7 +523,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpentokRTC/OpentokRTC-Prefix.pch";
 				INFOPLIST_FILE = "OpentokRTC/OpentokRTC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				PRODUCT_NAME = OpentokRTC;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

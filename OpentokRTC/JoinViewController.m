@@ -16,6 +16,10 @@
 @property (nonatomic, weak) IBOutlet UITextField *roomToken;
 @property (strong,nonatomic) NSString *backendUrl;
 @property (strong,nonatomic) NSMutableDictionary *apiData;
+@property (strong, nonatomic) IBOutlet UISwitch *joinSwitch;
+@property (strong, nonatomic) IBOutlet UIButton *joinBtn;
+@property (strong, nonatomic) IBOutlet UIButton *startBtn;
+@property (strong, nonatomic) IBOutlet UILabel *joinLabel;
 
 @end
 
@@ -137,6 +141,22 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+- (IBAction)changeSwitch:(id)sender {
+    if (self.joinSwitch.isOn){
+        self.joinBtn.hidden = false;
+        self.roomToken.hidden = false;
+        self.startBtn.hidden = true;
+        self.roomName.hidden = true;
+        self.joinLabel.text = @"JOIN A ROOM";
+    }else{
+        self.joinBtn.hidden = true;
+        self.roomToken.hidden = true;
+        self.startBtn.hidden = false;
+        self.roomName.hidden = false;
+        self.joinLabel.text = @"START A ROOM";
+
+    }
 }
 
 @end
